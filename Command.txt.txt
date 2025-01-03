@@ -1,0 +1,6 @@
+
+--> docker network create app-network
+
+--> docker run -d --name mysql-container --network app-network -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=testdb_docker -v D:/DockerData/mysql:/var/lib/mysql -p 3307:3306 mysql:8
+
+--> docker run -d --name spring-boot-app --network app-network -e DB_HOST=mysql-container -e DB_PORT=3306 -e DB_NAME=testdb -e DB_USERNAME=testuser -e DB_PASSWORD=testpass -p 8080:8080 spring-boot-app:latest
